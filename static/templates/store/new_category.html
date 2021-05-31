@@ -1,0 +1,12 @@
+
+
+    <h1 class="subtitle">agrega una nueva categoria</h1>
+ 
+    <form method="post">
+        {% csrf_token %}
+            <div class="is-dark">
+                {{ form.as_p }}    
+            </div>
+        <button  type="submit">agregar</button>
+    </form>
+

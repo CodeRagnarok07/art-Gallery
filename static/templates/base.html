@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock%}</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> 
+</head>
+<body>
+  
+    <header>
+        <!-- Intro settings -->
+        <style>
+          /* Default height for small devices */
+          #intro-example {
+            height: 400px;
+          }
+      
+          /* Height for devices larger than 992px */
+          @media (min-width: 992px) {
+            #intro-example {
+              height: 600px;
+            }
+          }
+          .cabesera{
+            background-image: url("{% static 'images/style/fond1.jpg' %}") ;
+            
+          }
+        </style>
+        {% include 'navbar.html' %}
+      
+      
+        <!-- Background image -->
+        <div class="cabesera"
+          id="intro-example"
+          class="p-5 text-center bg-image"
+          
+          
+        >
+          <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
+            <div class="d-flex justify-content-center align-items-center h-100">
+              <div class="text-white text-center">
+                <h1 class="mb-3">ricardo_vzart</h1>
+                <h5 class="mb-4 ">Galeria</h5>
+
+                <!-- CATEGORIAS -->
+                {% for i in categoy_navbar %}
+               
+               
+                        <a
+                        class="btn btn-outline-light btn-lg m-2"
+                        href="{% url 'view_category' i.slug %}"
+                        role="button"
+                        rel="nofollow"
+                        
+                        >{{ i }}</a
+                      >
+                                
+                {% endfor %}
+
+                <!-- NUEVA CATEGORIA -->
+                {% if user.is_authenticated %}
+
+                  <a
+                  class="btn btn-outline-light btn-lg m-2"
+                  href="{% url 'new_category' %}"
+                  role="button"
+                  rel=""
+                  target="_blank"
+                  >+</a>
+                
+
+                {% endif %}
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Background image -->
+      </header>
+
+
+
+    <div class="container mt-5">
+        {% block content %}
+        {% endblock %}
+    </div>
+    
+
+
+<br><br><br><br><br>
+    {% include 'footer.html' %}
+
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</body>
+</html>

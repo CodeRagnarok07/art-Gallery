@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block title %}ricardo_vzart{% endblock%}
+
+
+{% block content %}
+
+
+
+<!-- AGREGAR NUEVO ARTICULO -->
+<!-- fila -->
+<div class="row">
+
+    
+  {% if user.is_authenticated %}
+
+
+
+      <div class="col col-md-6 col-lg-3 " >
+        <div class="card ">
+          <div>
+          </div>
+            <div class="card-body">
+              <h5 class="card-title text-center">
+                <a
+                class="btn btn-outline-dark btn-lg m-2"
+                href="{% url 'Add_article' %}"
+                role="button"
+                rel=""
+                target="_blank"
+                >Add more+</a>
+              </h5>          
+              <div class="card-footer m-0">
+                <small class="text-muted"></small>
+              </div>
+            </div>
+          </div>
+    </div>
+
+  {% endif %}
+
+
+
+
+
+
+
+
+      {% for i in products %}
+      
+          <div class="col col-md-6 col-lg-3 " >
+
+              <!-- formato tipografia -->
+              <a class="text-reset" href="{% url 'detail' i.category.slug i.slug %}">
+
+
+
+
+              <div class="card ">
+                <div>
+                  <img
+                  src="/images/{{ i.tumbnail }}"
+                  class="card-img-top img-thumbnail img-fluid rounded mx-auto d-block mt-2"
+                  alt="..."
+                  style="  
+                  max-height: 300px;
+                  width: auto;"
+    
+                />
+                </div>
+
+
+                
+      
+      
+                  <div class="card-body">
+                    <h5 class="card-title text-center">{{ i.title }}</h5>
+                    <!-- <p class="card-text">{{ i.description|truncatewords:10 }} -->
+                    </p>
+              </a>
+                    
+     
+                    
+                    <div class="card-footer m-0">
+                      <small class="text-muted">
+                        <h6> {{ i.category }}</h6>
+                      </small>
+                    </div>
+                  </div>
+                </div>
+
+
+
+          </div>
+
+
+
+      
+      {% endfor %}
+</div>
+
+
+
+
+{% endblock %}

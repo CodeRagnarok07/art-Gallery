@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ category.name }}{% endblock%}
+
+
+{% block content %}
+
+
+<h1 class="text-center">{{ category.name }}</h1> 
+
+<div class="row">
+      {% for i in products %}
+    
+        <div class="col-12 col-md-6 " >
+
+            <a href="{% url 'detail' i.category.slug i.slug %}">
+
+            <div class="card ">
+    
+              <div>
+
+                <img
+                src="/images/{{ i.tumbnail }}"
+                class="card-img-top img-thumbnail img-fluid rounded mx-auto d-block mt-2"
+                alt="..."
+                style="  
+                height: 300px;
+                width: auto;"
+  
+              />
+              </div>
+               
+    
+    
+                <div class="card-body">
+                  <h5 class="card-title text-center">{{ i.title }}</h5>
+                  <!-- <p class="card-text">{{ i.description|truncatewords:10 }} -->
+                  </p>
+                  <h6>{{ i.category }}</h6>
+                 
+                  
+                  <div class="card-footer m-0">
+                    <small class="text-muted">{{ i.create_date }}</small>
+                  </div>
+                </div>
+              </div>
+
+            </a>
+
+
+        </div>
+
+
+
+      
+        
+
+        {% endfor %}
+</div>
+
+<!-- BORAR CATEGORIA -->
+{% if user.is_authenticated %}
+
+
+<h1>
+  <h5 class="card-title text-center">
+    <a
+    class="btn btn-outline-dark btn-lg m-2"
+    href="{% url 'Add_article' %}"
+    role="button"
+    rel=""
+    target="_blank"
+    >Delete Category</a>
+  </h5>          
+
+</h1>
+
+{% endif %}
+
+
+
+
+
+{% endblock %}
