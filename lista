@@ -1,0 +1,28 @@
+DONE crear store y core
+DONE configurar los sttings
+DONE configurar los static files y el sttings
+DONE installar bootstrap
+DONE crear la primera view index
+DONE configurar todos los html
+DONE agregar los models categoria y product
+DONE view detail
+DONE agregar las categorias como valores globales con su url y vista
+
+
+crear crud para las categorias
+    DONE add categoria
+    delete category
+
+    
+completar el CRUD para el POST y un CRUD para las categorias
+    DONE POST{
+        url auto add fron crud
+    }
+    DONE GET
+    EDIT
+    DELETE
+    
+
+crear las views de todos los core
+
+crear los contactos y targeta de precentacion 
