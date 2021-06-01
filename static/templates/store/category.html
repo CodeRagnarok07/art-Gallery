@@ -11,7 +11,7 @@
 <div class="row">
       {% for i in products %}
     
-        <div class="col-12 col-md-6 " >
+        <div class="col-12 col-md-6 col-lg-3" >
 
             <a href="{% url 'detail' i.category.slug i.slug %}">
 
@@ -36,11 +36,14 @@
                   <h5 class="card-title text-center">{{ i.title }}</h5>
                   <!-- <p class="card-text">{{ i.description|truncatewords:10 }} -->
                   </p>
-                  <h6>{{ i.category }}</h6>
                  
                   
                   <div class="card-footer m-0">
-                    <small class="text-muted">{{ i.create_date }}</small>
+                    <small >
+                    
+                      <a class="text-muted" href="{% url 'view_category' i.category.slug %}"><h6> {{ i.category }}</h6></a>
+
+                    </small>
                   </div>
                 </div>
               </div>

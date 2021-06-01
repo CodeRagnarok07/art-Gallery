@@ -15,7 +15,7 @@ class Category(models.Model):
     slug = SlugField(max_length=50,null=True, blank=True, unique=True)
 
     def save(self, *args, **kwargs):    #luego agregamos esta funcion a la clase para que se agrege el titulo como slug
-        #self.url = slugify(self.title)
+        self.slug = slugify(self.name)
         super(Category, self).save(*args, **kwargs)
 
     def __str__(self):
@@ -27,20 +27,17 @@ class Product(models.Model):
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=50)
     description = models.TextField(max_length=255, null=True, blank=True)
-    slug = SlugField(max_length=50, unique=True)
+    slug = SlugField(default="delalo_vacio" ,max_length=50, unique=True)
 
     ## venta ##
     selling = BooleanField()
     price = FloatField()
 
     ## ##
-    
     date_add = DateTimeField(auto_now_add=True)
-
     ### imagen ###
     image = models.ImageField(blank=True ,null=True)
     tumbnail = models.ImageField(blank=True ,null=True)
-
 
     def __str__(self):
         return self.title
@@ -50,7 +47,9 @@ class Product(models.Model):
 
     #ejecucion automatica
     def save(self, *args, **kwargs):
-        #self.image.name = (self.title + ".jpg") # va a ayudar con el se
+        self.slug = slugify(self.title)
+
+        #self.image.name = self.title + ".jpg" # va a ayudar con el se
         self.tumbnail = self.make_thumbnail(self.image)
 
         super().save(*args, **kwargs)
@@ -65,7 +64,7 @@ class Product(models.Model):
         thumb_io = BytesIO()
         img.save(thumb_io, 'JPEG', quality=100)
 
-        thumbnail = File(thumb_io, name= "thumbnail_"+image.name)
+        thumbnail = File(thumb_io, name= "thumbnail_"+ image.name)
 
         return thumbnail
 

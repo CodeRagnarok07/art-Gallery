@@ -27,9 +27,69 @@
                     {{ product.description }}
                 </p>
              </div>
-             <div class="card-footer">
-                {{ product.category }}
-             </div>
+             <div class="card-footer text-center m-0">
+
+                <strong> selling price :  ${{ product.price }}</strong>
+
+                
+              </div>
+              <div class="card-footer text-center m-0">
+
+                <a class="text-muted" href="{% url 'view_category' product.category.slug %}">{{ product.category }}</a>
+
+                
+              </div>
+              
+
+
+              <br>
+
+              <!-- Grid column isquierda-->
+          <div id="Contac" class="m-4 col  mx-auto mb-4 text-center">
+            <!-- Links -->
+
+
+            <h6 class="text-uppercase fw-bold mb-4">
+              Contact
+            </h6>       
+            
+            <!-- inconos -->
+            <div class="row">              
+              <div class="col">
+                <a target="_blank" class="text-reset" href="https://www.instagram.com/ricardo_vzart/">
+                  <p>
+                    <i class="fa fa-instagram fa-3x" aria-hidden="true"></i>
+                     
+                  </p>
+                </a>
+              </div>
+              <div class="col">
+                <a target="_blank" class="text-reset" href="https://www.facebook.com/racavzla">
+                  <p>
+                    <i class="fa fa-facebook fa-3x" aria-hidden="true"></i>
+                     
+                  </p>
+                </a>
+              </div>
+              <div class="col">
+                <a target="_blank" class="text-reset" href="https://mintable.app/u/racavzla">
+                  <p>
+                    <i class="fa fa-comments fa-3x" aria-hidden="true"></i>
+                     
+                  </p>
+                </a>
+
+               
+              </div>
+            <!-- inconos -->
+            
+            <p><i class="fa fa-phone me-3"></i>+58 04141682493</p>
+            <p><i class="fa fa-phone me-3"></i>+58 04266335852</p>
+            </div>
+            
+          </div>
+
+
          </div>
      </div>
  </div>

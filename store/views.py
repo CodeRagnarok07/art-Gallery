@@ -66,7 +66,7 @@ def Add_article(request):
         #crea una nueva categoria con una url bien echa automaticamente
         if form.is_valid():   
             product = form.save(commit=False)
-            product.slug = slugify(product.name)             
+            product.slug = slugify(product.title)             
             form.save()              
             return redirect('index')
     else:                        

@@ -48,7 +48,7 @@
 
       {% for i in products %}
       
-          <div class="col col-md-6 col-lg-3 " >
+          <div class="col-12 col-md-6 col-lg-3 " >
 
               <!-- formato tipografia -->
               <a class="text-reset" href="{% url 'detail' i.category.slug i.slug %}">
@@ -57,7 +57,12 @@
 
 
               <div class="card ">
-                <div>
+                <div
+                style="  
+                  height: 300px;
+                  width: auto;">
+
+
                   <img
                   src="/images/{{ i.tumbnail }}"
                   class="card-img-top img-thumbnail img-fluid rounded mx-auto d-block mt-2"
@@ -82,8 +87,10 @@
      
                     
                     <div class="card-footer m-0">
-                      <small class="text-muted">
-                        <h6> {{ i.category }}</h6>
+                      <small >
+                        
+                        <a class="text-muted" href="{% url 'view_category' i.category.slug %}"><h6> {{ i.category }}</h6></a>
+
                       </small>
                     </div>
                   </div>
