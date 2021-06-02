@@ -12,7 +12,7 @@ from django.utils.text import slugify
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
-    slug = SlugField(max_length=50,null=True, blank=True, unique=True)
+    slug = models.SlugField(max_length=50,null=True, blank=True, unique=True)
 
     def save(self, *args, **kwargs):    #luego agregamos esta funcion a la clase para que se agrege el titulo como slug
         self.slug = slugify(self.name)
@@ -26,16 +26,16 @@ class Product(models.Model):
     ## segmentcion ##
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=50)
-    description = models.TextField(max_length=255, null=True, blank=True)
-    slug = SlugField(default="delalo_vacio" ,max_length=50, unique=True)
+    description = models.TextField(null=True, blank=True)
+    slug = models.SlugField(default="delalo_vacio" ,max_length=50, unique=True)
 
     ## venta ##    
-    price = FloatField()
+    price = models.FloatField()
 
 
     ## ##
     buy_link = models.TextField()
-    date_add = DateTimeField(auto_now_add=True)
+    date_add = models.DateTimeField(auto_now_add=True)
     ### imagen ###
     image = models.ImageField(blank=True ,null=True)
     tumbnail = models.ImageField(blank=True ,null=True)

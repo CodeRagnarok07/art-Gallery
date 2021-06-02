@@ -26,20 +26,26 @@
                 <p>
                     {{ product.description }}
                 </p>
-             </div>
-             <div class="card-footer text-center m-0">
-
-                <strong> selling price :  ${{ product.price }}</strong> asds
-
-                
-              </div>
-              <div class="card-footer text-center m-0">
-
                 <a class="text-muted" href="{% url 'view_category' product.category.slug %}">{{ product.category }}</a>
 
+             </div>
+             {% if product.price %}
+
+             <div class="card-footer text-center m-0">
+
+               <small> Selling Price : </small> <strong  >  ${{ product.price }}</strong> 
+
                 
               </div>
-              
+              {% endif %}
+
+
+              {% if product.buy_link %}
+              <div class="card-footer text-center m-0">
+                <a class="text-muted btn btn-outline-secondary" href="{{ product.buy_link }}">Buy NFT</a>
+
+              </div>
+              {% endif %}
 
 
               <br>
@@ -53,17 +59,20 @@
               Contact
             </h6>       
             
+            <div class="row">
+
+
             <!-- inconos -->
             <div class="row">              
-              <div class="col">
+              <div class="col-4">
                 <a target="_blank" class="text-reset" href="https://www.instagram.com/ricardo_vzart/">
                   <p>
                     <i class="fa fa-instagram fa-3x" aria-hidden="true"></i>
-                     
+               
                   </p>
                 </a>
               </div>
-              <div class="col">
+              <div class="col-4">
                 <a target="_blank" class="text-reset" href="https://www.facebook.com/racavzla">
                   <p>
                     <i class="fa fa-facebook fa-3x" aria-hidden="true"></i>
@@ -71,20 +80,25 @@
                   </p>
                 </a>
               </div>
-              <div class="col">
+              <div class="col-4">
                 <a target="_blank" class="text-reset" href="https://mintable.app/u/racavzla">
                   <p>
                     <i class="fa fa-comments fa-3x" aria-hidden="true"></i>
                      
                   </p>
                 </a>
-
-               
               </div>
+
+              <!-- nombres -->
+            
+            </div>
+            
             <!-- inconos -->
             
             <p><i class="fa fa-phone me-3"></i>+58 04141682493</p>
             <p><i class="fa fa-phone me-3"></i>+58 04266335852</p>
+            <p><i class="fa fa-mail-forward me-3"></i>Ricardo.vzart@gmail.com</p>
+
             </div>
             
           </div>
