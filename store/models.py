@@ -29,11 +29,12 @@ class Product(models.Model):
     description = models.TextField(max_length=255, null=True, blank=True)
     slug = SlugField(default="delalo_vacio" ,max_length=50, unique=True)
 
-    ## venta ##
-    selling = BooleanField()
+    ## venta ##    
     price = FloatField()
 
+
     ## ##
+    buy_link = models.TextField()
     date_add = DateTimeField(auto_now_add=True)
     ### imagen ###
     image = models.ImageField(blank=True ,null=True)
@@ -43,13 +44,10 @@ class Product(models.Model):
         return self.title
 
         
-
-
     #ejecucion automatica
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
-
-        #self.image.name = self.title + ".jpg" # va a ayudar con el se
+        #self.image.name = self.title + ".jpg" # va a ayudar con el seo
         self.tumbnail = self.make_thumbnail(self.image)
 
         super().save(*args, **kwargs)

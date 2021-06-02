@@ -13,6 +13,7 @@ class NewProduct(forms.ModelForm):
 
     class Meta:
         model = Product
-        fields =( 'category', 'title','description','selling', 'price', 'image',)
-        #widgets = {            'image'        }
+        fields =( 'category', 'title','description','price', 'image', 'buy_link')
+        widgets = {            
+            'image': forms.ImageField()        }
      
